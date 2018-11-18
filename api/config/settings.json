@@ -1,0 +1,9 @@
+{
+    "http": {
+        "port": 3000,
+        "host": "localhost"
+    },
+    "db": {
+        "path": "mongodb://localhost:27017/data"
+    }
+}
