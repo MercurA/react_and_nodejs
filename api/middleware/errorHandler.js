@@ -9,5 +9,5 @@ exports = module.exports = (response) => {
 }
 
 exports['@singleton'] = true;
-exports['async'] = false;
+exports['@async'] = false;
 exports['@require'] = ['lib/responseTypes']
