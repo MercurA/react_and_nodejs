@@ -48,4 +48,4 @@ exports = module.exports = (userModel,schemaValidation,auth) => {
 
 exports['@singleton'] = true;
 exports['@async'] = false;
-exports['@require'] = ['model/userModel','config/schemas/validation/user','lib/authorization'];
+exports['@require'] = ['model/user/userModel','config/schemas/validation/user','lib/authorization'];

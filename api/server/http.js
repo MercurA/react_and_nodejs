@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 
-exports = module.exports = (errorHandler, handleUser, config, auth) => {
+exports = module.exports = (errorHandler, handleUser, config, auth, handleComment) => {
     let PORT = config.http.port;
     let HOST = config.http.host;
 
@@ -20,7 +20,10 @@ exports = module.exports = (errorHandler, handleUser, config, auth) => {
 
     api.post('/login', handleUser.findUser);
     api.get('/get', auth.validate, handleUser.getUser);
+    console.log()
+    // api.post('/addComment', auth.validate, handleComment.saveComment);
     api.post('/signup', handleUser.saveUser);
+
 
     api.use(errorHandler.getError);
 
@@ -34,4 +37,10 @@ exports = module.exports = (errorHandler, handleUser, config, auth) => {
 
 exports['@singleton'] = true;
 exports['@async'] = false;
-exports['@require'] = ['middleware/errorHandler', 'handler/handleUser', 'config/settings', 'middleware/tokenValidation'];
+exports['@require'] = [
+    'middleware/errorHandler',
+    'handler/user/handleUser',
+    'config/settings',
+    'middleware/tokenValidation',
+    'handler/comments/handleComments',
+];

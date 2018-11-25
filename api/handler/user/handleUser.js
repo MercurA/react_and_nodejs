@@ -47,4 +47,4 @@ exports = module.exports = (userService,response) => {
 
 exports['@singleton'] = true;
 exports['@async'] = false;
-exports['@require'] = ['services/userService','lib/responseTypes'];
+exports['@require'] = ['services/user/userService','lib/responseTypes'];
