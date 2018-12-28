@@ -2,10 +2,13 @@ const mongoose = require('mongoose');
 
 exports = module.exports = () => {
 	return new mongoose.Schema({
-		user: String,
-		comment: String,
-		timeStamp: String,
-		tag: String
+		ISBN: String,
+		Title: String,
+		Author: String,
+		Description: String,
+		NrOfCopies: Number,
+		NrOfCopiesAvailable: Number,
+		Publisher: String,
 	});
 };
 

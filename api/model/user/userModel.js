@@ -1,28 +1,25 @@
-const mongoose = require('mongoose');
+exports = module.exports = (db) => {
 
+	return {
 
-exports = module.exports = (db) =>{
+		async insertUser(userData) {
+			let user = new db.userModel(userData);
 
-    return {
+			return await user.save();
+		},
 
-        async findUserByEmail(user){
-            let findUser = await db.userModel.find({email: user.email});
+		async findUserByEmail(user) {
+			let findUser = await db.userModel.find({ email: user.email });
 
-            return findUser[0];
-        },
+			return findUser[0];
+		},
 
-        async insertUser(userData) {
-            let user = new db.userModel(userData);
+		async findUser() {
+			return await db.userModel.find({});
+		}
+	};
 
-            return await user.save();
-        },
-
-        async findUser(){
-            return await db.userModel.find({});
-        }
-    }
-
-}
+};
 
 exports['@singleton'] = true;
 exports['@async'] = false;

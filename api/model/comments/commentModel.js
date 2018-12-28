@@ -1,25 +1,28 @@
-const mongoose = require('mongoose');
+exports = module.exports = (db) => {
 
+	return {
 
-exports = module.exports = (db) =>{
+		async insertComment(comment) {
 
-    return {
-        
-        async insertComment(comment) {
-            let user = new db.commentModel(comment);
+			let comm = new db.commentModel(comment);
 
-            return await user.save();
-        },
+			return await comm.save();
+		},
 
-        async findComment(){
-            const comment;
-            comment = await db.commentModel.find({}); 
-            
-            return comment; 
-        }
-    }
+		async findComment() {
+			return await db.commentModel.find({});
+		},
 
-}
+		async removeComment(id) {
+			return await db.commentModel.findByIdAndRemove({ _id: id });
+		},
+		async findByUser() {
+			return await db.commentModel.find({});
+		}
+
+	};
+
+};
 
 exports['@singleton'] = true;
 exports['@async'] = false;
