@@ -1,7 +1,7 @@
 exports = module.exports = (response) => {
 	return {
-		getError(err, req, res) {
-			if (!err.statusCode) err.statusCode = 500;
+		getError(err, req, res, next) {
+			if (!err.statusCode) res.status(500).send(response.onFailure(err.message));
 			res.status(err.statusCode).send(response.onFailure(err.message));
 		}
 	};
@@ -9,5 +9,5 @@ exports = module.exports = (response) => {
 };
 
 exports['@singleton'] = true;
-exports['async'] = false;
+exports['@async'] = false;
 exports['@require'] = ['lib/responseTypes'];

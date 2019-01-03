@@ -1,6 +1,6 @@
 ### Resources
 
-    POST http://localhost:3000/addBooks
+    POST http://localhost:3000/admin/addBooks
 
 ## Description
 
@@ -12,8 +12,8 @@ It has to send an object containing the following:
             Title: string,
             Author: string,
             Description: string,
-            NrOfCopies: string,
-            NrOfCopiesAvailable: string,
+            NrOfCopies: number,
+            NrOfCopiesAvailable: number,
             Publisher: string,
         }
     }
