@@ -12,7 +12,7 @@ exports = module.exports = (userService, response) => {
 			try {
 				userFound = await userService.findUser(user);
 
-				return res.send(response.onSuccess(userFound));
+				return res.send(userFound);
 			} catch (error) {
 				next(error);
 			}

@@ -1,4 +1,4 @@
-import {GET_USER} from '../actionTypes';
+import {GET_USER,SIGN_UP} from '../actionTypes';
 
 
 const initialState = {
@@ -7,7 +7,8 @@ const initialState = {
         firstName: '',
         lastName: '',
         admin: ''
-    }
+    },
+    isUserNew: false,
 }
 
 const rootReducer = (state=initialState, action) => {
@@ -17,6 +18,12 @@ const rootReducer = (state=initialState, action) => {
                 ...state,
                 user: action.payload
             };
+        case SIGN_UP: {
+            return {
+                ...state,
+                isUserNew: action.payload
+            }
+        }
         default:
             return state;
     }

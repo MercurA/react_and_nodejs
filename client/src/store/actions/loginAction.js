@@ -1,10 +1,15 @@
-import { GET_USER } from '../actionTypes';
-const BASEURL = 'http://localhost:3000/';
+import { GET_USER, SIGN_UP } from '../actionTypes';
+const BASEURL = 'http://localhost:3001/';
 
 
 export const addUserToState = userData => ({
     type: GET_USER,
     payload: userData
+})
+
+export const userIsNew = isNew => ({
+    type: SIGN_UP,
+    payload: isNew
 })
 
 
@@ -19,7 +24,11 @@ export function login(user) {
         )
             .then(response => response.json())
             .then(json => {
-                debugger
-                return dispatch(addUserToState(json))})
+                if(json.success) {
+                    return dispatch(addUserToState(json));
+                } else {
+                    return dispatch(userIsNew(true));
+                }
+            })
     }
 }
